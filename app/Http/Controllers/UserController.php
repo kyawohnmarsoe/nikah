@@ -12,15 +12,10 @@ class UserController extends Controller
     /**
      * Show the Users for a given user.
      */
-    public function show(string $id): Response
+
+    public function showOnlineUsers(): Response
     {
-        return Inertia::render('Users/Profile', [
-            'user' => User::findOrFail($id)
-        ]);
+        return Inertia::render('Users/OnlineUsers');
     }
 
-    public function test(): Response
-    {
-        return Inertia::render('Users/Test');
-    }
 }

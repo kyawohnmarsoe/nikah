@@ -1,6 +1,20 @@
-import React from "react";
+import React,{useState,useEffect} from 'react'
+import {instance} from '../../Contexts/api/instance'
 
-export default function Table() {
+export default function OnlineUsersTable() {
+   const [statsData,setStatsData] = useState({stats:[],errMessage:'',loading:true})
+
+    useEffect(()=>{
+       instance.get('/filter/WillBeDisabledIn2Days/10/20')
+        .then(res => {
+            setStatsData({stats:res.data.value,errMessage:'',loading:false}) 
+            console.log(res.data.value)
+        })
+        .catch(err => {
+          setStatsData({stats:[],errMessage:err.message,loading:false})
+          console.log(err.message)
+        })
+    },[])
   return (
     <div className="overflow-x-auto">
   <table className="table">

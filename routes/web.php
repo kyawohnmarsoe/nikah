@@ -16,8 +16,6 @@ use Inertia\Inertia;
 |
 */
 use App\Http\Controllers\UserController;
- 
-Route::get('/user/{id}', [UserController::class, 'show']);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -32,14 +30,12 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/online/users', function () {
-    return Inertia::render('Online/Users');
-})->middleware(['auth', 'verified'])->name('online.users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/users/online', [UserController::class, 'showOnlineUsers'])->name('users.online');
 });
 
 require __DIR__.'/auth.php';
