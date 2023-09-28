@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import Stats from './Stats';
-import Alert from './Alert';
-import {instance} from '../../Contexts/api/instance'
+import Alert from '../../Components/DaisyUI/Alert';
+import {instance} from '../../api/instance'
 
 
 export default function StatsList() {
@@ -29,7 +29,7 @@ export default function StatsList() {
             }
             
            {
-                stats ? stats.map(s => <Stats stats={s} key={s.sortIndex}/>) 
+                stats.length ? stats.map(s => <Stats stats={s} key={s.sortIndex}/>) 
                 : <Alert msg='No Data Found' css='alert'/>
            }
 

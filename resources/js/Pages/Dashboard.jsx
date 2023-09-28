@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import StatsList from '@/Components/DaisyUI/StatsList';
+import StatsList from './Stats/StatsList';
 
 export default function Dashboard({ auth }) {
 
