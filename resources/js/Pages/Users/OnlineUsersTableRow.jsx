@@ -32,16 +32,17 @@ console.log(user)
         <td>
           <strong>Last Refill</strong> : {user.lastRefill && user.lastRefill}
           <br/>
-          <strong>Payment</strong> : { !!user.unPaidInvoices ? <span className=''>{user.unPaidInvoices} Unpaid</span> : <span className="text-success">All Paid</span> } 
+          <strong>Payment</strong> : { !!user.unPaidInvoices ? <span style={{color:user.serviceStatusColorHex}}>{user.unPaidInvoices} Unpaid</span> : <span className="text-success">All Paid</span> } 
           <br/>
           <strong>Notes</strong> : {user.lastRefill && user.lastRefill}
           
           {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
         </td>
         
-        <th>
+        {/* <th>
           <button className="btn btn-ghost btn-xs">details</button>
-        </th>
+        </th> */}
+        <td>{user.manualExpirationDate && user.manualExpirationDate}</td>
 
         <td>
             <strong>Acc Name</strong> : {user.accountName && user.accountName}
@@ -52,7 +53,7 @@ console.log(user)
         </td>
 
         <td>
-            <strong>Status</strong> : {user.onlineStatus && user.onlineStatus}
+            <strong>Status</strong> : {user.onlineStatus && <span style={{color:user.onlineStatusColor}}>{user.onlineStatus}</span>}
           <br/>
           <strong>MAC</strong> : { user.mac && user.mac } 
           <br/>
