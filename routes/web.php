@@ -18,6 +18,10 @@ use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/a', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
