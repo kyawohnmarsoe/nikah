@@ -29,8 +29,8 @@ export default function StatsList() {
             }
             
            {
-                stats.length ? stats.map(s => <Stats stats={s} key={s.sortIndex}/>) 
-                : <Alert msg='No Data Found' css='alert'/>
+                stats.length && stats.map(s => <Stats stats={s} key={s.sortIndex}/>) 
+               
            }
 
            {

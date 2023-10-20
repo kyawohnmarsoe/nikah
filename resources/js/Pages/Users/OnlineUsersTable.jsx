@@ -8,7 +8,7 @@ export default function OnlineUsersTable() {
    const {users,errMessage,loading} = onlineUsersData
 
     useEffect(()=>{
-       instance.get('/user/filter/WillBeDisabledIn2Days/10/10')
+       instance.get('/user/filter/WillBeDisabledIn2Days/20/30')
         .then(res => {
             setOnlineUsersData({users:res.data.value.itemsList,errMessage:'',loading:false}) 
             // console.log(res.data.value.itemsList[0].customer.customerFullName)
@@ -47,12 +47,12 @@ export default function OnlineUsersTable() {
             }
             
            {
-               users.length ? users.map(user => <OnlineUsersTableRow user={user} key={user.userIndex}/>) 
-                : <tr><td>No Data Found</td></tr>
+               users.length && users.map(user => <OnlineUsersTableRow user={user} key={user.userIndex}/>) 
+               
            }
 
            {
-                errMessage && <tr><td>{errMessage}</td></tr>
+                errMessage && <tr className='text-error'><td>{errMessage}</td></tr>
            }
     </tbody>
     {/* foot */}
