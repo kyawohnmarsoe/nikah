@@ -19,7 +19,11 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
-})->name('home');
+});
+
+Route::get('/register-details', function () {
+    return view('register');
+});
 
 Route::get('/a', function () {
     return Inertia::render('Welcome', [
