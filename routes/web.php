@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\FindeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,18 @@ use Inertia\Inertia;
 */
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 });
+Route::get('/', function () {
+    return Redirect::to('/home');
+});
 
-Route::get('/register-details', function () {
-    return view('register');
+Route::get('/findees/create', [FindeeController::class, 'create'])->name('findees.create');
+Route::post('/findees', [FindeeController::class, 'store'])->name('findees.store');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/findees/all', [FindeeController::class, 'index'])->name('findees');
 });
 
 Route::get('/a', function () {
