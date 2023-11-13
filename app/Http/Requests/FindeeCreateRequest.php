@@ -20,8 +20,9 @@ class FindeeCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'g-recaptcha-response' => 'required|recaptchav3:contact-us,0.5',
             'fullName' => ['required', 'max:255'],
-            'gender' => ['required', 'max:255'],
+            'gender' => ['required'],
             'dateOfBirth' => ['required'],
             'placeOfBirth' => ['required'],
             'currentAddress' => ['required'],

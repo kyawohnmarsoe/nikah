@@ -9,7 +9,7 @@
 <div class="w3-container w3-padding-64 w3-pale-red  w3-wide">
     @if(session('status') == '201')
         <div class="alert alert-success">
-            <h1 class="w3-center" style="color:green;">" Register Success "</h1>
+            <h2 class="w3-center" style="color:green;">"Register Success"</h2>
             <p class="w3-center" style="color:green;">We will contact you soon ...</p>
         </div>
     @endif
@@ -28,9 +28,19 @@
         <div class="w3-container w3-brown">
             <h2>Nikah Myanmar</h2>
         </div>
-        <form id="contactForm1" class="w3-container" enctype="multipart/form-data"
-            action="{{ route('findees.store') }}" method="post">
+        <form name="g-v3-recaptcha-contact-us" id="g-v3-recaptcha-contact-us" class="w3-container"
+            enctype="multipart/form-data" action="{{ route('findees.store') }}" method="post">
             @csrf
+
+            <div class="form-group">
+                {!! RecaptchaV3::initJs() !!}
+
+                {!! RecaptchaV3::field('contact-us') !!}
+
+                @error('g-recaptcha-response')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
 
             <div class="w3-row">
                 <p class="w3-col m6">
@@ -213,9 +223,6 @@
                         I agree to use in this website. </small></label>
             </p>
 
-            <!-- <p>      
-    <label class="w3-text-brown"><b>Please Upload Clear And Fullbody Image</b></label>
-    <input class="w3-input w3-border w3-sand @error('images') is-invalid @enderror" required name="images" type="text" value="{{ old('images') }}"></p> -->
 
             <p><button class="w3-btn w3-brown">Register</button></p>
 

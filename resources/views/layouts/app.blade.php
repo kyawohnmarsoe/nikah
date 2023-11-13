@@ -15,39 +15,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="icon" type="image/x-icon" href="/img/icon.png">
 
-    <!-- Include script -->
-    <script type="text/javascript">
-        function callbackThen(response) {
-
-            // read Promise object
-            response.json().then(function (data) {
-                console.log(data);
-                if (data.success && data.score >= 0.6) {
-                    console.log('valid recaptcha');
-                } else {
-                    document.getElementById('contactForm').addEventListener('submit', function (event) {
-                        event.preventDefault();
-                        alert('recaptcha error');
-                    });
-                }
-            });
-        }
-
-        function callbackCatch(error) {
-            console.error('Error:', error)
-        }
-
-    </script>
-
-    {!! htmlScriptTagJsApi([
-    'callback_then' => 'callbackThen',
-    'callback_catch' => 'callbackCatch',
-    ]) !!}
 </head>
 
 <body>
     <!-- Navbar (sticky bottom) -->
-    <div class="w3-top w3-hide-small ">
+    <div class="w3-top ">
         <div class="w3-bar w3-white w3-center w3-padding w3-opacity-min w3-hover-opacity-off">
 
             <a href="/home" style="width:25%;" class="w3-bar-item w3-button">Home</a>
