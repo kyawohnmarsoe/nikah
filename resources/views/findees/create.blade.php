@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Register')
 @section('content')
+
 <div>
     <img class="w3-round w3-grayscale-min" src="/img/5.jpg" style="width:100%;">
 </div>
 
 <div class="w3-container w3-padding-64 w3-pale-red  w3-wide" >
-  @if (session('success'))
+@if (session('status') == '201')
     <div class="alert alert-success">
-         <h1 class="w3-center" style="color:green;">" {{ session('success') }}"</h1>
+         <h1 class="w3-center" style="color:green;">" Register Success "</h1>
+         <p class="w3-center" style="color:green;">We will contact you soon ...</p>
     </div>
 @endif
 
@@ -26,7 +28,7 @@
   <div class="w3-container w3-brown">
     <h2>Nikah Myanmar</h2>
   </div>
-  <form class="w3-container" action="/findees" method="post" onsubmit="e.preventDefault()">
+  <form id="contactForm" class="w3-container" enctype="multipart/form-data" action="{{ route('findees') }}" method="post" >
     @csrf
     <p>      
     <label class="w3-text-brown"><b>Name</b></label>
@@ -111,18 +113,23 @@
 
    <p>      
     <label class="w3-text-brown"><b>Please Upload Clear And Fullbody Image</b></label>
-    <input class="w3-input w3-border w3-sand @error('images') is-invalid @enderror" required name="images" type="file"></p>
+    <input class="w3-input w3-border w3-sand @error('images') is-invalid @enderror" required name="fullImage" type="file"></p>
 
+    <p>
+      <input calss="w3-input w3-border w3-sand @error('agree') is-invalid @enderror" type="checkbox" id="agree" name="agree" value="yes">
+  <label class="w3-text-brown" for="agree"><small>All of my information filled in this form is correct and I agree to use in this website. </small></label>
+    </p>
 
     <!-- <p>      
     <label class="w3-text-brown"><b>Please Upload Clear And Fullbody Image</b></label>
     <input class="w3-input w3-border w3-sand @error('images') is-invalid @enderror" required name="images" type="text" value="{{ old('images') }}"></p> -->
 
-    <p>
-    <button class="w3-btn w3-brown">Register</button></p>
+    <p><button class="w3-btn w3-brown">Register</button></p>
+
   </form>
 </div>
 </div>
+
 
 <div class="w3-container w3-padding-64 w3-pale-red  w3-wide" id="contact" style="display:none;">
     <h1 class="w3-center">Contact Us At Our Facebook Page </h1>

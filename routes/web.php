@@ -21,15 +21,17 @@ use App\Http\Controllers\UserController;
 Route::get('/home', function () {
     return view('home');
 });
+
 Route::get('/', function () {
     return Redirect::to('/home');
 });
 
 Route::get('/findees/create', [FindeeController::class, 'create'])->name('findees.create');
 Route::post('/findees', [FindeeController::class, 'store'])->name('findees.store');
-
+Route::post('/upload-image', [FindeeController::class,'upload'])->name('upload-image');
 Route::middleware('auth')->group(function () {
     Route::get('/findees/all', [FindeeController::class, 'index'])->name('findees');
+    Route::post('/findees/search', [FindeeController::class, 'search'])->name('findees.search');
 });
 
 Route::get('/a', function () {

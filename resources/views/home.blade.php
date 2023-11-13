@@ -50,7 +50,7 @@
 </div>
 
 <!-- Wedding information -->
-<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min " id="wedding">
+<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min " id="about">
   <div class="w3-content">
      <h1 class="w3-center w3-text-grey"><b>To Finding The Love Of Your Life </b></h1>
 <h2 class="w3-center w3-text-grey"><b>Begins Here</b></h2>

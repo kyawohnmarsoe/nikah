@@ -7,86 +7,93 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\FindeeCreateRequest;
+
 
 class FindeeController extends Controller
 {
     
      public function index()
     {
-        // return view('findees.index',['findees' => Findee::all()]);
-        return Inertia::render('Findees/FindeesTable', [
-            'findees' => Findee::all()
+        $findees = Findee::where('active', true)
+               ->orderBy('fullName')
+            //    ->take(3)
+               ->get();
+
+         return Inertia::render('Findees/Findees', [
+            'findees' => $findees
         ]);
     }
+
+    public function search(Request $request):RedirectResponse
+    {
+        $findees = Findee::where('active', true)
+               ->orderBy('fullName')
+            //    ->take(3)
+               ->get();
+
+         return Inertia::render('Findees/Findees', [
+            'findees' => $findees
+        ]);
+    }
+
+    public function upload(Request $request)
+{
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('images'), $imageName);
+        // You can save the file path or other information to the database here
+        return redirect()->back()->with('success', 'Image uploaded successfully.');
+    }
+
+    return redirect()->back()->with('error', 'Image not uploaded.');
+}
 
     public function create()
     {
         return view('findees.create');
     }
 
-     public function store(Request $request): RedirectResponse
+     public function store(FindeeCreateRequest $request)
     {
-    //   return ($request->fullName);
+        $request->validated();
 
-        $validated = $request->validate([
-            'fullName' => ['required', 'max:255'],
-            'dateOfBirth' => ['required'],
-            'placeOfBirth' => ['required'],
-            'currentAddress' => ['required'],
-            'phoneNumber' => ['required'],
-            'race' => ['required'],
-            'religion' => ['required'],
-            'bloodType' => ['required'],
-            'weight' => ['required'],
-            'height' => ['required'],
-            'medicalHistory' => ['required'],
-            'familyMemebers' => ['required'],
-            'education' => ['required'],
-            'occupation' => ['required'],
-            'monthlyIncome' => ['required'],
-            'personalAssets' => ['required'],
-            'hobbies' => ['required'],
-            'socialmedia' => ['required'],
-            'images' => ['required']
-        ]);
+        // $image = $request->file('images');
+        // $imageName = time().'.'.$image->getClientOriginalExtension();
+        // $image->move(public_path('images'), $imageName);
 
-        // dd($validated);
+        $path = $request->file('fullImage')->store('findee_img');
+
+        // Storage::put($request->fullImage,$path);
  
-        // Storage::put($request->images, $contents);
-        // $path = $request->file('images')->store('images');
-        // Storage::putFile('images', $request->file('images'));
-        // $contents = Storage::get($request->images);
+        $data = [
+            'fullName' => $request->fullName,
+            'dateOfBirth' => $request->dateOfBirth,
+            'placeOfBirth' => $request->placeOfBirth,
+            'currentAddress' => $request->currentAddress,
+            'phoneNumber' => $request->phoneNumber,
+            'race' => $request->race,
+            'religion' => $request->religion,
+            'bloodType' => $request->bloodType,
+            'weight' => $request->weight,
+            'height' => $request->height,
+            'medicalHistory' => $request->medicalHistory,
+            'familyMemebers' => $request->familyMemebers,
+            'education' => $request->education,
+            'occupation' => $request->occupation,
+            'monthlyIncome' => $request->monthlyIncome,
+            'personalAssets' => $request->personalAssets,
+            'hobbies' => $request->hobbies,
+            'socialmedia' => $request->socialmedia,
+            'fullImage' => $path
+        ];
+
+        Findee::create($data);
+
+        //  return redirect('/findees/create')->with('success', 'Register Success');
+         return back()->with('status', 201); 
        
-        $path = Storage::put($request->images,'sdfsdf');
-         dd($path);
-
-        $findee = Findee::create($validated);
-        $findee->save();
-
-        return redirect('/findees/create')->with('success', 'Register Success');
-    
-
-        // $findee = Findee::create([
-        //     'fullName' => $request->fullName,
-        //     'dateOfBirth' => $request->dateOfBirth,
-        //     'placeOfBirth' => $request->placeOfBirth,
-        //     'currentAddress' => $request->currentAddress,
-        //     'phoneNumber' => $request->phoneNumber,
-        //     'race' => $request->race,
-        //     'religion' => $request->religion,
-        //     'bloodType' => $request->bloodType,
-        //     'weight' => $request->weight,
-        //     'height' => $request->height,
-        //     'medicalHistory' => $request->medicalHistory,
-        //     'familyMemebers' => $request->familyMemebers,
-        //     'education' => $request->education,
-        //     'occupation' => $request->occupation,
-        //     'monthlyIncome' => $request->monthlyIncome,
-        //     'personalAssets' => $request->personalAssets,
-        //     'hobbies' => $request->hobbies,
-        //     'socialmedia' => $request->socialmedia,
-        //     'images' => $request->images
-        // ]);
-
     }
+
 }

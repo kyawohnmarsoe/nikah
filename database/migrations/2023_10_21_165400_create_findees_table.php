@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('findees', function (Blueprint $table) {
             $table->id();
              $table->string('fullName');
+             $table->string('gender');
              $table->string('dateOfBirth');
              $table->string('placeOfBirth');
              $table->string('currentAddress');
@@ -31,7 +32,8 @@ return new class extends Migration
              $table->text('personalAssets');
              $table->text('hobbies');
              $table->string('socialmedia');
-             $table->string('images');
+             $table->string('fullImage');
+             $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

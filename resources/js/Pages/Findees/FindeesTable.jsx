@@ -21,16 +21,13 @@ export default function FindeesTable ({ auth, findees })
                                     {/* head */ }
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <label>
-                                                    <input type="checkbox" className="checkbox" />
-                                                </label>
-                                            </th>
-                                            <th>Username</th>
-                                            <th>Customer Name</th>
-                                            <th>Accounting Info</th>
-                                            <th>Expiration Date</th>
-                                            <th>Account Info</th>
+
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Address</th>
+                                            <th>Occupation</th>
+                                            <th>Socialmedia</th>
                                             <th>Online Status</th>
                                             <th>Others</th>
                                         </tr>
@@ -48,12 +45,12 @@ export default function FindeesTable ({ auth, findees })
                                     {/* foot */ }
                                     <tfoot>
                                         <tr>
-                                            <th></th>
-                                            <th>Username</th>
-                                            <th>Customer Name</th>
-                                            <th>Accounting Info</th>
-                                            <th>Expiration Date</th>
-                                            <th>Account Info</th>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Address</th>
+                                            <th>Occupation</th>
+                                            <th>Socialmedia</th>
                                             <th>Online Status</th>
                                             <th>Others</th>
                                         </tr>

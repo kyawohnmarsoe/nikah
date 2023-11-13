@@ -28,6 +28,6 @@ class Findee extends Model
             'personalAssets',
             'hobbies',
             'socialmedia',
-            'images'
+            'fullImage'
     ];
 }

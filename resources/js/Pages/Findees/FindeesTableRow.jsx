@@ -5,7 +5,7 @@ export default function FindeesTableRow ({ findee })
     return (
         <tr>
 
-            <td>{ findee?.fullName }</td>
+            <td>{ findee?.id }</td>
 
             <td>{ findee?.fullName }</td>
 
