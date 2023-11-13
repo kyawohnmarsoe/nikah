@@ -32,15 +32,6 @@
             enctype="multipart/form-data" action="{{ route('findees.store') }}" method="post">
             @csrf
 
-            <div class="form-group">
-                {!! RecaptchaV3::initJs() !!}
-
-                {!! RecaptchaV3::field('contact-us') !!}
-
-                @error('g-recaptcha-response')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
-            </div>
 
             <div class="w3-row">
                 <p class="w3-col m6">
@@ -223,6 +214,15 @@
                         I agree to use in this website. </small></label>
             </p>
 
+            <div class="form-group">
+                {!! RecaptchaV3::initJs() !!}
+
+                {!! RecaptchaV3::field('contact-us') !!}
+
+                @error('g-recaptcha-response')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
 
             <p><button class="w3-btn w3-brown">Register</button></p>
 

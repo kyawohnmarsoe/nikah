@@ -20,7 +20,7 @@ class FindeeCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'g-recaptcha-response' => 'required|recaptchav3:contact-us,0.5',
+           
             'fullName' => ['required', 'max:255'],
             'gender' => ['required'],
             'dateOfBirth' => ['required'],
@@ -41,7 +41,8 @@ class FindeeCreateRequest extends FormRequest
             'hobbies' => ['required'],
             'socialmedia' => ['required'],
             'halfImage' => ['required','image','max:1024'],
-            'fullImage' => ['required','image','max:1024']
+            'fullImage' => ['required','image','max:1024'],
+             'g-recaptcha-response' => 'required|recaptchav3:contact-us,0.5'
         ];
     }
 }
