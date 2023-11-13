@@ -21,6 +21,7 @@ class FindeeCreateRequest extends FormRequest
     {
         return [
             'fullName' => ['required', 'max:255'],
+            'gender' => ['required', 'max:255'],
             'dateOfBirth' => ['required'],
             'placeOfBirth' => ['required'],
             'currentAddress' => ['required'],
@@ -38,6 +39,7 @@ class FindeeCreateRequest extends FormRequest
             'personalAssets' => ['required'],
             'hobbies' => ['required'],
             'socialmedia' => ['required'],
+            'halfImage' => ['required','image','max:1024'],
             'fullImage' => ['required','image','max:1024']
         ];
     }

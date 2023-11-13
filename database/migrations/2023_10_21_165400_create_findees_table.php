@@ -32,6 +32,7 @@ return new class extends Migration
              $table->text('personalAssets');
              $table->text('hobbies');
              $table->string('socialmedia');
+             $table->string('halfImage');
              $table->string('fullImage');
              $table->boolean('active')->default(true);
             $table->timestamps();

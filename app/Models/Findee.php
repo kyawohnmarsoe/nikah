@@ -8,26 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Findee extends Model
 {
     use HasFactory;
+     protected $guarded = [];
 
-        protected $fillable = [
-            'fullName',
-            'dateOfBirth',
-            'placeOfBirth',
-            'currentAddress',
-            'phoneNumber',
-            'race',
-            'religion',
-            'bloodType',
-            'weight',
-            'height',
-            'medicalHistory',
-            'familyMemebers',
-            'education',
-            'occupation',
-            'monthlyIncome',
-            'personalAssets',
-            'hobbies',
-            'socialmedia',
-            'fullImage'
-    ];
+    //     protected $fillable = [
+    //         'fullName',
+    //         'gender',
+    //         'dateOfBirth',
+    //         'placeOfBirth',
+    //         'currentAddress',
+    //         'phoneNumber',
+    //         'race',
+    //         'religion',
+    //         'bloodType',
+    //         'weight',
+    //         'height',
+    //         'medicalHistory',
+    //         'familyMemebers',
+    //         'education',
+    //         'occupation',
+    //         'monthlyIncome',
+    //         'personalAssets',
+    //         'hobbies',
+    //         'socialmedia',
+    //         'halfImage',
+    //         'fullImage'
+    // ];
 }

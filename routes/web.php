@@ -29,6 +29,7 @@ Route::get('/', function () {
 Route::get('/findees/create', [FindeeController::class, 'create'])->name('findees.create');
 Route::post('/findees', [FindeeController::class, 'store'])->name('findees.store');
 Route::post('/upload-image', [FindeeController::class,'upload'])->name('upload-image');
+
 Route::middleware('auth')->group(function () {
     Route::get('/findees/all', [FindeeController::class, 'index'])->name('findees');
     Route::post('/findees/search', [FindeeController::class, 'search'])->name('findees.search');
@@ -52,7 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/users/online', [UserController::class, 'showOnlineUsers'])->name('users.online');
-});
+   });
 
 require __DIR__.'/auth.php';

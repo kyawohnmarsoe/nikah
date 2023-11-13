@@ -24,6 +24,10 @@ class FindeeController extends Controller
             'findees' => $findees
         ]);
     }
+        public function create()
+    {
+        return view('findees.create');
+    }
 
     public function search(Request $request):RedirectResponse
     {
@@ -37,38 +41,37 @@ class FindeeController extends Controller
         ]);
     }
 
-    public function upload(Request $request)
-{
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
-        // You can save the file path or other information to the database here
-        return redirect()->back()->with('success', 'Image uploaded successfully.');
-    }
+//     public function upload(Request $request)
+// {
+//     if ($request->hasFile('images')) {
+//         $image = $request->file('images');
+//         $imageName = time().'.'.$image->getClientOriginalExtension();
+//         $image->move(public_path('images'), $imageName);
+//         return redirect()->back()->with('success', 'Image uploaded successfully.');
+//     }
 
-    return redirect()->back()->with('error', 'Image not uploaded.');
-}
+//     return redirect()->back()->with('error', 'Image not uploaded.');
+// }
 
-    public function create()
-    {
-        return view('findees.create');
-    }
+
 
      public function store(FindeeCreateRequest $request)
     {
+        // return $request;
         $request->validated();
 
         // $image = $request->file('images');
         // $imageName = time().'.'.$image->getClientOriginalExtension();
         // $image->move(public_path('images'), $imageName);
 
-        $path = $request->file('fullImage')->store('findee_img');
+        $path = $request->file('halfImage')->store('findee_img/half');
+        $fullPath = $request->file('fullImage')->store('findee_img/full');
 
         // Storage::put($request->fullImage,$path);
  
         $data = [
             'fullName' => $request->fullName,
+            'gender' => $request->gender,
             'dateOfBirth' => $request->dateOfBirth,
             'placeOfBirth' => $request->placeOfBirth,
             'currentAddress' => $request->currentAddress,
@@ -86,7 +89,8 @@ class FindeeController extends Controller
             'personalAssets' => $request->personalAssets,
             'hobbies' => $request->hobbies,
             'socialmedia' => $request->socialmedia,
-            'fullImage' => $path
+            'halfImage' => $path,
+            'fullImage' => $fullPath
         ];
 
         Findee::create($data);
