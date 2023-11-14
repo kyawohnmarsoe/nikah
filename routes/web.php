@@ -18,6 +18,11 @@ use App\Http\Controllers\FindeeController;
 */
 use App\Http\Controllers\UserController;
 
+
+Route::get('/linkstorage', function () {
+Artisan::call('storage:link'); // this will do the command line job
+});
+
 Route::get('/home', function () {
     return view('home');
 });
