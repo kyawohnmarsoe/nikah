@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\FindeeController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ use App\Http\Controllers\UserController;
 Route::get('/linkstorage', function () {
 Artisan::call('storage:link'); // this will do the command line job
 });
+
+Route::get('/optimize', function () {
+Artisan::call('exec:command', ['command' => 'optipng -o7 ' . 'path']);
+});
+
 
 Route::get('/home', function () {
     return view('home');

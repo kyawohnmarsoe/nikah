@@ -3,22 +3,13 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '68a93fbfbb66ac106ec69c3f830b1da7ca9f7ca3',
+        'reference' => '78ed5e94edfd79467eaa6367d91d2130648efbdd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'biscolab/laravel-recaptcha' => array(
-            'pretty_version' => 'v6.0.0',
-            'version' => '6.0.0.0',
-            'reference' => 'c3d742e6a082cefe2ffce1e13b17a104abfc7234',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../biscolab/laravel-recaptcha',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'brick/math' => array(
             'pretty_version' => '0.11.0',
             'version' => '0.11.0.0',
@@ -373,6 +364,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'josiasmontag/laravel-recaptchav3' => array(
             'pretty_version' => '1.0.2',
             'version' => '1.0.2.0',
@@ -409,7 +409,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '68a93fbfbb66ac106ec69c3f830b1da7ca9f7ca3',
+            'reference' => '78ed5e94edfd79467eaa6367d91d2130648efbdd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -784,8 +784,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(

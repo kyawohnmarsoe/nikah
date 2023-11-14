@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class FindeeCreateRequest extends FormRequest
 {
     
@@ -40,9 +41,9 @@ class FindeeCreateRequest extends FormRequest
             'personalAssets' => ['required'],
             'hobbies' => ['required'],
             'socialmedia' => ['required'],
-            'halfImage' => ['required','image','max:1024'],
-            'fullImage' => ['required','image','max:1024'],
-            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+            'halfImage' => ['required','image','mimes:jpeg,png,jpg,gif','max:1024'],
+            'fullImage' => ['required','image','mimes:jpeg,png,jpg,gif','max:1024'],
+            // 'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
         ];
     }
 }

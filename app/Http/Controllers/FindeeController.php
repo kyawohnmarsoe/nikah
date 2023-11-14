@@ -8,7 +8,7 @@ use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\FindeeCreateRequest;
-
+use Intervention\Image\Facades\Image;
 
 class FindeeController extends Controller
 {
@@ -41,31 +41,31 @@ class FindeeController extends Controller
         ]);
     }
 
-//     public function upload(Request $request)
-// {
-//     if ($request->hasFile('images')) {
-//         $image = $request->file('images');
-//         $imageName = time().'.'.$image->getClientOriginalExtension();
-//         $image->move(public_path('images'), $imageName);
-//         return redirect()->back()->with('success', 'Image uploaded successfully.');
-//     }
+    public function upload(Request $request,$name)
+{
+        $image = $request->file($name);
+        $imageName = rand(111, 888).time().'.'.$image->getClientOriginalExtension();
 
-//     return redirect()->back()->with('error', 'Image not uploaded.');
-// }
+        $path = public_path('storage/' . $imageName);
+
+        // Compress and save the image
+        Image::make($image->getRealPath())->encode('jpg', 80)->save($path);
+
+        return $imageName;
+
+}
 
 
 
      public function store(FindeeCreateRequest $request)
     {
-        // return $request;
         $request->validated();
 
-        // $image = $request->file('images');
-        // $imageName = time().'.'.$image->getClientOriginalExtension();
-        // $image->move(public_path('images'), $imageName);
+        // $path = $request->file('halfImage')->store('findee_img/half');
+        // $fullPath = $request->file('fullImage')->store('findee_img/full');
 
-        $path = $request->file('halfImage')->store('findee_img/half');
-        $fullPath = $request->file('fullImage')->store('findee_img/full');
+        $halfImage = $this->upload($request,'halfImage');
+        $fullImage = $this->upload($request,'fullImage');
 
         // Storage::put($request->fullImage,$path);
  
@@ -89,8 +89,8 @@ class FindeeController extends Controller
             'personalAssets' => $request->personalAssets,
             'hobbies' => $request->hobbies,
             'socialmedia' => $request->socialmedia,
-            'halfImage' => $path,
-            'fullImage' => $fullPath
+            'halfImage' => $halfImage,
+            'fullImage' => $fullImage
         ];
 
         Findee::create($data);
