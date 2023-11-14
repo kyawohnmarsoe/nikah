@@ -28,8 +28,8 @@
         <div class="w3-container w3-brown">
             <h2>Nikah Myanmar</h2>
         </div>
-        <form name="g-v3-recaptcha-contact-us" id="g-v3-recaptcha-contact-us" class="w3-container"
-            enctype="multipart/form-data" action="{{ route('findees.store') }}" method="post">
+        <form id="register" class="w3-container" enctype="multipart/form-data"
+            action="{{ route('findees.store') }}" method="post">
             @csrf
 
 
@@ -217,14 +217,11 @@
             <div class="form-group">
                 {!! RecaptchaV3::initJs() !!}
 
-                {!! RecaptchaV3::field('contact-us') !!}
-
-                @error('g-recaptcha-response')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
+                {!! RecaptchaV3::field('register') !!}
             </div>
 
             <p><button class="w3-btn w3-brown">Register</button></p>
+
 
         </form>
     </div>

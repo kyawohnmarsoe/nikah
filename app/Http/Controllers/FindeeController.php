@@ -96,7 +96,7 @@ class FindeeController extends Controller
         Findee::create($data);
 
         //  return redirect('/findees/create')->with('success', 'Register Success');
-         return back()->with('status', 201); 
+         return redirect('/findees/create')->with('status', 201);
        
     }
 
