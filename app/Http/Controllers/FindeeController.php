@@ -26,8 +26,18 @@ class FindeeController extends Controller
     }
         public function create()
     {
+        $findee = Findee::where('active', true)->orderByDesc('id')->limit(1)->get();
         
-        return view('findees.create');
+        $id = $findee[0]['id'];
+        if($id>=100){
+             return view('findees.create',[
+             'status' => 100
+             ]);
+             
+        }else{
+            return view('findees.create');
+        }
+       
     }
 
     public function search(Request $request):RedirectResponse
