@@ -26,6 +26,7 @@ class FindeeController extends Controller
     }
         public function create()
     {
+        
         return view('findees.create');
     }
 

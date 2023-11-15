@@ -43,7 +43,7 @@ class FindeeCreateRequest extends FormRequest
             'socialmedia' => ['required'],
             'halfImage' => ['required','image','mimes:jpeg,png,jpg,gif','max:1024'],
             'fullImage' => ['required','image','mimes:jpeg,png,jpg,gif','max:1024'],
-            // 'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
         ];
     }
 }

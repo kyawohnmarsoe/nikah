@@ -3,6 +3,7 @@ import FindeesList from "./FindeesList";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import FindeesCard from "./FindeesCard";
 import FilterForm from "./FilterForm";
+import PaginatedItems from "@/Components/PaginatedItems"
 
 
 export default function Findees ({ auth, findees })
@@ -20,6 +21,9 @@ export default function Findees ({ auth, findees })
             header={ <h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2> }
         >
 
+            <PaginatedItems items={ findees } itemsPerPage={ 4 } >
+                <span>test</span>
+            </PaginatedItems>
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-4">
