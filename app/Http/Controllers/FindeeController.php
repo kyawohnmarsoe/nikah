@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\FindeeCreateRequest;
 use Intervention\Image\Facades\Image;
+use DateTime;
 
 class FindeeController extends Controller
 {
@@ -16,7 +17,7 @@ class FindeeController extends Controller
      public function index()
     {
         $findees = Findee::where('active', true)
-               ->orderBy('fullName')
+               ->orderByDesc('id')
             //    ->take(3)
                ->get();
 
@@ -24,7 +25,8 @@ class FindeeController extends Controller
             'findees' => $findees
         ]);
     }
-        public function create()
+
+    public function create()
     {
         $findee = Findee::where('active', true)->orderByDesc('id')->limit(1)->get();
         
@@ -35,21 +37,44 @@ class FindeeController extends Controller
              ]);
              
         }else{
-            return view('findees.create');
+            return view('findees.create',[
+            'status' => 0
+            ]);
         }
        
     }
 
-    public function search(Request $request):RedirectResponse
+    public function search(Request $request)
     {
-        $findees = Findee::where('active', true)
-               ->orderBy('fullName')
-            //    ->take(3)
-               ->get();
+        $findees = Findee::where('active', true)->orderByDesc('id')->get();
 
-         return Inertia::render('Findees/Findees', [
-            'findees' => $findees
-        ]);
+        if($request->age){
+            $findees = Findee::where('age','<', $request->age)->orderByDesc('id')->get();
+        }
+
+        if($request->gender){
+        $findees = Findee::where('gender', $request->gender)->orderByDesc('id')->get();
+            }
+
+            if($request->currentAddress){
+            $findees = Findee::where('currentAddress', $request->currentAddress)->orderByDesc('id')->get();
+                }
+
+                if($request->race){
+                $findees = Findee::where('race', $request->race)->orderByDesc('id')->get();
+                    }
+
+                     if($request->religion){
+                     $findees = Findee::where('religion', $request->religion)->orderByDesc('id')->get();
+                     }
+
+        // dd($findees);
+
+        //  return Inertia::render('Findees/Findees', [
+        //     'findees' => $findees
+        // ]);
+
+         return redirect('/findees/all',['findees' => $findees]);
     }
 
     public function upload(Request $request,$name)
@@ -66,6 +91,13 @@ class FindeeController extends Controller
 
 }
 
+public function calculateAge($dob) {
+$dob = new DateTime($dob);
+$today = new DateTime();
+$age = $today->diff($dob);
+return $age->y;
+}
+
 
 
      public function store(FindeeCreateRequest $request)
@@ -78,12 +110,16 @@ class FindeeController extends Controller
         $halfImage = $this->upload($request,'halfImage');
         $fullImage = $this->upload($request,'fullImage');
 
+        $dateOfBirth = $request->dateOfBirth;
+        $age = $this->calculateAge($dateOfBirth);
+       
         // Storage::put($request->fullImage,$path);
  
         $data = [
             'fullName' => $request->fullName,
             'gender' => $request->gender,
             'dateOfBirth' => $request->dateOfBirth,
+            'age' => $age,
             'placeOfBirth' => $request->placeOfBirth,
             'currentAddress' => $request->currentAddress,
             'phoneNumber' => $request->phoneNumber,

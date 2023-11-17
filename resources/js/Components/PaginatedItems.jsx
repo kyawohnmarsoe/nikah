@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-// function Items ({ currentItems })
-// {
-//     return (
-//         <>
-//             { currentItems &&
-//                 currentItems.map((item) => (
-//                     <div>
-//                         <h3>Item #{ item }</h3>
-//                     </div>
-//                 )) }
-//         </>
-//     );
-// }
-
-export default function PaginatedItems ({ items, itemsPerPage, children })
+export default function PaginatedItems ({ items, itemsPerPage, setCurrentItems,children })
 {
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
@@ -39,6 +25,11 @@ export default function PaginatedItems ({ items, itemsPerPage, children })
         setItemOffset(newOffset);
     };
 
+    useEffect(()=>{
+        setCurrentItems(currentItems)
+        console.log(currentItems)
+    }, [])
+
     return (
         <>
             {/* <Items currentItems={ currentItems } /> */ }
@@ -50,8 +41,9 @@ export default function PaginatedItems ({ items, itemsPerPage, children })
                 pageCount={ pageCount }
                 previousLabel="< "
                 renderOnZeroPageCount={ null }
+                className='pagination'
             />
-            { children }
+            {/* { children } */}
         </>
     );
 }

@@ -21,7 +21,7 @@ class FindeeCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-           
+
             'fullName' => ['required', 'max:255'],
             'gender' => ['required'],
             'dateOfBirth' => ['required'],

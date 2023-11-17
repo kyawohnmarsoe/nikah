@@ -63,7 +63,7 @@
       <div class="w3-half">
         <h2>Finders</h2>
         <p>Finders shall contact our consultants immediately via our facebook page and provide  your requirements and preferrences.</p>
-        <p><a href="https://www.facebook.com/nikah.myanmar/">Go To Our Facebook Page</a></p>
+        <p><a href="https://www.facebook.com/nikahmyanmaragency">Go To Our Facebook Page</a></p>
         <p>Fees : Finders shall pay per head once they plan to meet in person.</p>
        
       </div>
@@ -84,7 +84,9 @@
   <p class="w3-large">To Begin Your Journey To Lasting Love!</p>
   <p class="w3-xlarge">
     <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-round w3-red w3-opacity w3-hover-opacity-off" style="padding:8px 60px">Send Message</button> -->
-    <a href="https://www.facebook.com/nikah.myanmar/"><button class="w3-button w3-round w3-red w3-opacity w3-hover-opacity-off" style="padding:8px 60px">Send Message</button></a>
+    <a href="https://www.facebook.com/nikahmyanmaragency"><button
+            class="w3-button w3-round w3-red w3-opacity w3-hover-opacity-off" style="padding:8px 60px">Send
+            Message</button></a>
   </p>
 </div>
 

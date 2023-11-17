@@ -205,13 +205,13 @@
 
                 <div class="w3-row">
                     <p class="w3-col m6">
-                        <label class="w3-text-brown"><b>Please Upload Your Selfie</b></label>
+                        <label class="w3-text-brown"><b>Please Upload Your Selfie (Max 1MB)</b></label>
                         <!-- <input class="w3-input w3-border w3-sand @error('halfImage') is-invalid @enderror" required name="halfImage" type="file"></p> -->
                         <input class="w3-input w3-border w3-sand @error('halfImage') is-invalid @enderror" required
                             name="halfImage" type="file"></p>
 
                     <p class="w3-col m6">
-                        <label class="w3-text-brown"><b>Fullbody Image</b></label>
+                        <label class="w3-text-brown"><b>Fullbody Image (Max 1MB)</b></label>
 
                         <input class="w3-input w3-border w3-sand @error('fullImage') is-invalid @enderror" required
                             name="fullImage" type="file"></p>

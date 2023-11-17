@@ -2,29 +2,7 @@ import React from "react";
 
 export default function FindeesCard ({ findee })
 {
-    const age = () =>
-    {
-        // Get the date of birth from the user or a database
-        const dob = new Date(findee?.dateOfBirth); // Replace this with the actual date of birth
-
-        // Get the current date
-        const currentDate = new Date();
-
-        // Calculate the difference in years
-        let age = currentDate.getFullYear() - dob.getFullYear();
-
-        // Check if the birthday for this year has occurred or not
-        // If the birthday for this year has not occurred yet, subtract 1 from the age
-        if (
-            currentDate.getMonth() < dob.getMonth() ||
-            (currentDate.getMonth() === dob.getMonth() && currentDate.getDate() < dob.getDate())
-        )
-        {
-            age--;
-        }
-
-        return age;
-    }
+   
 
     const imgPath = `/storage/${ findee?.fullImage }`
 
@@ -33,7 +11,7 @@ export default function FindeesCard ({ findee })
             <figure><img src={ imgPath } alt="Profile" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
-                    { findee?.fullName } ({ age() })
+                    { findee?.fullName } ({findee?.age})
                     {/* <div className="badge badge-secondary">NEW</div> */ }
                 </h2>
                 {/* <p>{ findee?.currentAddress } </p> */ }

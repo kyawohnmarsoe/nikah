@@ -1,0 +1,1 @@
+import{j as t}from"./app-877b9012.js";function l({findee:r}){return t.jsxs("tr",{children:[t.jsx("td",{children:r==null?void 0:r.id}),t.jsx("td",{children:r==null?void 0:r.fullName})]})}export{l as default};

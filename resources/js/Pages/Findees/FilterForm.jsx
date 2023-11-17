@@ -11,7 +11,7 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
 
     // const user = usePage().props.auth.user;
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
+    const { data, setData, post, errors, processing, recentlySuccessful } = useForm({
         age: '',
         gender: '',
         currentAddress: '',
@@ -22,20 +22,19 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
     const submit = (e) =>
     {
         e.preventDefault();
-
-        // patch(route('profile.update'));
+        post(route('findees.search', data));
+        // post(route('findees.search', filterObj));
     };
 
-    const changeHandler = (e) =>
-    {
-        e.preventDefault();
-        const key = e.target.id
-        const value = e.target.value
+    // const changeHandler = (e) =>
+    // {
+    //     e.preventDefault();
+    //     const key = e.target.id
+    //     const value = e.target.value
 
-        setData(key, value)
-        setFilterObj(data)
+    //     setData(key, value)
 
-    }
+    // }
 
     return (
         <div className='mb-5'>
@@ -49,8 +48,8 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                             type="age"
                             className="mt-1 block w-full"
                             value={ data.age }
-                            // onChange={ (e) => setData('age', e.target.value) }
-                            onChange={ (e) => changeHandler(e) }
+                            onChange={ (e) => setData('age', e.target.value) }
+                            // onChange={ (e) => changeHandler(e) }
                             required
                             autoComplete="age"
                         >
@@ -73,7 +72,8 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                             type="gender"
                             className="mt-1 block w-full"
                             value={ data.gender }
-                            onChange={ (e) => changeHandler(e) }
+                            onChange={ (e) => setData('gender', e.target.value) }
+                            // onChange={ (e) => changeHandler(e) }
                             required
                             autoComplete="gender"
                         >
@@ -93,7 +93,9 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                             type="currentAddress"
                             className="mt-1 block w-full"
                             value={ data.currentAddress }
-                            onChange={ (e) => changeHandler(e) }
+                            onChange={ (e) => setData('currentAddress', e.target.value) }
+
+                            // onChange={ (e) => changeHandler(e) }
                             required
                             autoComplete="currentAddress"
                         >
@@ -111,7 +113,9 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                             type="race"
                             className="mt-1 block w-full"
                             value={ data.race }
-                            onChange={ (e) => changeHandler(e) }
+                            onChange={ (e) => setData('race', e.target.value) }
+
+                            // onChange={ (e) => changeHandler(e) }
                             required
                             autoComplete="race"
                         >
@@ -129,7 +133,9 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                             type="religion"
                             className="mt-1 block w-full"
                             value={ data.religion }
-                            onChange={ (e) => changeHandler(e) }
+                            onChange={ (e) => setData('religion', e.target.value) }
+
+                            // onChange={ (e) => changeHandler(e) }
                             required
                             autoComplete="religion"
                         >
@@ -140,13 +146,10 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                     </div>
                 </div>
 
+                <div className="flex items-center gap-4">
+                    <PrimaryButton disabled={ processing }>Search</PrimaryButton>
 
-
-
-                {/* <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={ processing }>Save</PrimaryButton>
-
-                    <Transition
+                    {/* <Transition
                         show={ recentlySuccessful }
                         enter="transition ease-in-out"
                         enterFrom="opacity-0"
@@ -154,8 +157,8 @@ export default function FilterForm ({ address, race, religion, filterObj, setFil
                         leaveTo="opacity-0"
                     >
                         <p className="text-sm text-gray-600">Saved.</p>
-                    </Transition>
-                </div> */}
+                    </Transition> */}
+                </div>
             </form>
         </div>
     )
