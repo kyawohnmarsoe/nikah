@@ -37,7 +37,8 @@
     </p>
     <br>
 
-    <p class="w3-center"><a href="#wedding" class="w3-button w3-black w3-round w3-padding-large w3-large">Register Now</a></p>
+    <p class="w3-center"><a href="/findees/create"
+            class="w3-button w3-black w3-round w3-padding-large w3-large">Register Now</a></p>
   </div>
 </div>
 
@@ -70,7 +71,7 @@
       <div class="w3-half">
         <h2>Findees</h2>
         <p>Findees shall register in our website with the correct infromation and our consultants will contact you once they found suitable candidates.</p>
-         <p><a href="#">Register Here</a></p>
+         <p><a href="/findees/create">Register Here</a></p>
          <p>Fees : Free of charge.</p>
       </div>
      

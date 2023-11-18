@@ -50,12 +50,12 @@ select.w3-hover-sand {
 }
 @media (max-width:500px){
 .bgimg {
-    background-image: url("/img/1Large-mobile.jpeg");
+    background-image: url("/img/1Large-mobile1.jpeg");
    width: 100%;
 }
 
 .bgimg2 {
-    background-image: url("/img/3-mobile.jpg");
+    background-image: url("/img/3-mobile1.jpg");
    width: 100%;
 }
 }
