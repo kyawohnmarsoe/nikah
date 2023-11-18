@@ -3,7 +3,10 @@
 @section('content')
 
 <div>
-    <img class="w3-round w3-grayscale-min" src="/img/5Large.jpeg" style="width:100%;">
+    <img class="w3-round w3-grayscale-min w3-hide-small" src="/img/5Large.jpeg" style="width:100%;">
+    <img class="w3-round w3-grayscale-min w3-hide-medium w3-hide-large" src="/img/5Large-mobile.jpeg"
+        style="width:100%;">
+    
 </div>
 @if($status == '100')
     <div class="w3-container w3-padding-64 w3-pale-red  w3-wide">

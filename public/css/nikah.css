@@ -1,50 +1,61 @@
-        body,
-        h1,
-        h2 {
-            font-family: "Raleway", sans-serif
-        }
+body,
+h1,
+h2 {
+    font-family: "Raleway", sans-serif
+}
 
-        body,
-        html {
-            height: 100%
-        }
+body,
+html {
+    height: 100%
+}
 
-        p {
-            line-height: 2
-        }
+p {
+    line-height: 2
+}
 
-        .bgimg,
-        .bgimg2 {
-            min-height: 100%;
-            background-position: center;
-            background-size: cover;
-        }
+.bgimg,
+.bgimg2 {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
 
-        .bgimg {
-            background-image: url("/img/1Large.jpeg");
-            background-attachment: fixed;
-        }
+.bgimg {
+    background-image: url("/img/1Large.jpeg");
+    background-attachment: fixed;
+}
 
-        .bgimg2 {
-            background-image: url("/img/3.jpg");
-            background-attachment: fixed;
-        }
+.bgimg2 {
+    background-image: url("/img/3.jpg");
+    background-attachment: fixed;
+}
 
-        .is-invalid {
-            border: 1px solid #e92929 !important;
-        }
+.is-invalid {
+    border: 1px solid #e92929 !important;
+}
 
-        .w3-text-brown {
-            letter-spacing: 1px;
-        }
+.w3-text-brown {
+    letter-spacing: 1px;
+}
 
-        input.w3-sand,
-        input.w3-hover-sand,
-        select.w3-sand,
-        select.w3-hover-sand {
-            height: 45px;
-        }
+input.w3-sand,
+input.w3-hover-sand,
+select.w3-sand,
+select.w3-hover-sand {
+    height: 45px;
+}
 
-        .w3-input {
-            padding: 4px;
-        }
+.w3-input {
+    padding: 4px;
+}
+@media (max-width:500px){
+.bgimg {
+    background-image: url("/img/1Large-mobile.jpeg");
+   
+}
+
+.bgimg2 {
+    background-image: url("/img/3-mobile.jpg");
+   
+}
+}
